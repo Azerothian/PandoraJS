@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{816297D5-DC68-4B22-A54A-E76CACA2C07B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <NoStdLib>True</NoStdLib>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <LangVersion>ISO-2</LangVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Illisian.PandoraJs.Utils</RootNamespace>
+    <AssemblyName>Illisian.PandoraJs.Utils</AssemblyName>
+    <TemplateFile>Properties\Illisian.ScriptSharp.script</TemplateFile>
+    <CodeAnalysisRuleSet>Properties\Illisian.ScriptSharp.ruleset</CodeAnalysisRuleSet>
+    <ReferencePath>$(ProgramFiles)\ScriptSharp\v1.0\Framework\</ReferencePath>
+    <DeploymentPath>..\Output\Js</DeploymentPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;CODE_ANALYSIS;SCRIPTSHARP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0028, 1591, 1684</NoWarn>
+    <DocumentationFile>bin\Debug\Illisian.PandoraJs.Utils.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>CODE_ANALYSIS;SCRIPTSHARP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0028, 1591, 1684</NoWarn>
+    <DocumentationFile>bin\Release\Illisian.PandoraJs.Utils.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib, Version=0.7.0.0, Culture=neutral, PublicKeyToken=8fc0e3af5abcb6c4, processorArchitecture=MSIL" />
+    <Reference Include="Script.Web" />
+    <Reference Include="Script.jQuery" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Logging.cs" />
+    <Compile Include="Postify.cs" />
+    <Compile Include="RealDictionary.cs" />
+    <Compile Include="Request.cs" />
+    <Compile Include="Support.cs" />
+    <Content Include="Properties\Illisian.ScriptSharp.ruleset" />
+    <Content Include="Properties\Illisian.ScriptSharp.script" />
+    <Compile Include="FileLoader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Illisian.PandoraJs.Utils.Extension\Illisian.PandoraJs.Utils.Extension.csproj">
+      <Project>{25A752A4-9CFF-445F-9C34-5D2FE6C028B1}</Project>
+      <Name>Illisian.PandoraJs.Utils.Extension</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(ProgramFiles)\ScriptSharp\v1.0\ScriptSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(ProjectDir)$(OutDir)*.dll $(ProjectDir)..\Output\Bin\ /Y
+copy $(ProjectDir)$(OutDir)*.xml $(ProjectDir)..\Output\Bin\ /Y</PostBuildEvent>
+  </PropertyGroup>
+</Project>
